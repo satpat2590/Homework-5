@@ -2,9 +2,6 @@ class Main {
   public static void main(String[] args) {
    Stack stacky = new Stack(8);
 
-   stacky.push(9);
-
-   Queue kyuwwy = new Queue(10);
 
    kyuwwy.push(12);
    kyuwwy.push(9);
