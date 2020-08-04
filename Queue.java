@@ -1,6 +1,6 @@
 class Queue {
   int[] list; 
-  int front = 0; 
+  int front = -1; 
   int back; 
   int count = 0; 
   int size; 
@@ -11,26 +11,27 @@ class Queue {
     back = -1;
   }
 
-  public int pop() {
+  public void pop() {
     if (count == 0) {
       System.out.println("System Error\n Not enough elements in list");
-      return -1;
   } else { 
+      if (front == -1) 
+        front = (front + 1) % size; 
+
       front = (front + 1) % size; 
       count--; 
-      return list[front];
-      
   }
-  }
+}
 
 
   public void push(int item) {
-    if ( count == size ) {
-      System.out.println("System Error\n Overflow Error");
-  } else {
-      list[++back] = item; 
+    if (back != front || back == -1) {
+      back = (back + 1) % size; 
+      list[back] = item;  
       count++; 
-  } 
+  } else {
+      System.out.println("System Error\n Overflow Error");
+  }
 }
 
 
@@ -47,17 +48,34 @@ class Queue {
 
    public void printArray() {
 
-    int temp = front + 1; 
-
-    System.out.print("\n " + list[front]);
-
-    while(temp != front) {
-      System.out.print(", " + list[temp]);
-      temp = (temp + 1) % size; 
+    if (front == -1) {
+       front += 1;
     }
-    
+
+    int temp = front; 
+
+    if (back > front) {
+      while (temp < back) {
+        System.out.print(", " + list[temp]);
+        temp += 1; 
+      }
+      System.out.print(", " + list[back]);
+    }
+
+    if (front > back) {
+      while (temp > back) {
+        System.out.print(", " + list[temp]);
+        temp = (temp + 1) % size; 
+      }
+      while (temp <= back) {
+        System.out.print(", " + list[temp]);
+        temp = (temp + 1) % size; 
+      }
+    }
   }
   
-
+  public void printCount() {
+    System.out.println("\n " + count);
+  }
 
 }

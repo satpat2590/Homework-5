@@ -4,6 +4,7 @@ class Stack {
   public int top;
   int size = 0; 
   int[] list; 
+  int count; 
 
   Stack(int capacity) {
     list = new int[capacity];
@@ -15,19 +16,21 @@ class Stack {
   public int pop() {
     
     if (top == -1) {
-      System.out.println("Error \n Too few elements in the list to return the topmost element");
+      System.out.println("Error\n Too few elements in the list to return the topmost element");
       return -1; 
   } else {
+       count--; 
        return list[top--];
     }
   }
 
   public void push(int item) {
 
-    if (top == (size - 1)) {
+    if (count == size) {
       System.out.println("Overflow Error\n Too many elements in the stack currently"); 
   } else {
       list[++top] = item; 
+      count++; 
   }
 
 } 
@@ -35,7 +38,7 @@ class Stack {
   public int peek() {
     
     if (top == -1) {
-      System.out.println("Error \n Too few elements in the list to return the topmost element");
+      System.out.println("Error\n Too few elements in the list to return the topmost element");
       return -1; 
   } else {
       return list[top];
@@ -46,7 +49,7 @@ class Stack {
   public void printArray() {
       System.out.println(" ");
 
-      for (int x = 0; x < size; x++) {
+      for (int x = 0; x < count; x++) {
         if (x == 0) 
           System.out.print(" " + list[x]);
         else
@@ -54,6 +57,10 @@ class Stack {
       }
 
     }
+
+  public void printCount() {
+    System.out.println("\n " + count);
+  }
   
 
 

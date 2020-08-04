@@ -1,3 +1,3 @@
 class Graph {
-  
+  int[][] graph = 
 }
