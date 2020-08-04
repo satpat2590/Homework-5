@@ -11,12 +11,15 @@ class Queue {
     back = -1;
   }
 
-  public void pop() {
+  public int pop() {
     if (count == 0) {
       System.out.println("System Error\n Not enough elements in list");
+      return -1;
   } else { 
       front = (front + 1) % size; 
       count--; 
+      return list[front];
+      
   }
   }
 
@@ -46,7 +49,7 @@ class Queue {
 
     int temp = front + 1; 
 
-    System.out.print(" " + list[front]);
+    System.out.print("\n " + list[front]);
 
     while(temp != front) {
       System.out.print(", " + list[temp]);
