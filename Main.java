@@ -1,31 +1,22 @@
 import java.util.Arrays;
+import java.util.Scanner; 
 
 class Main {
   public static void main(String[] args) {
 
-    Stack s = new Stack(10); 
-    s.push(9);
-    s.push(8);
-    System.out.println(Arrays.toString(s.list));
+    Scanner s = new Scanner(System.in);
 
-    Queue q = new Queue(10);
-    q.push(0);
-    q.push(1);
-    q.push(2);
-    q.push(3);
-    q.push(4);
-    q.push(5);
-    q.push(6);
-    q.push(7);
-    q.push(8);
-    q.push(9);
+    Graph g = new Graph(10);
 
-    int[][] newG = new int[10][10];
+    g.add_edge(3, 4);
+    g.add_edge(0, 3);
+    g.add_edge(0, 2);
 
-    Graph g = new Graph(newG);
+    int[] p = new int[10];
+
+    g.bfs(5, p);
 
     
-
 
 
     

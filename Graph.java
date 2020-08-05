@@ -1,24 +1,78 @@
+import java.util.Arrays;
+
 class Graph {
 
-
-  Graph(int[][] graph) { 
-    
+  int[][] graph;  
+  int count = 0; 
+  int r = 0; 
+  int prevCount = 0; 
+  int tempMax;
+  
+  Graph(int max) { 
+    graph = new int[max][max];
+    tempMax = max; 
   }
 
-  
-
+//the visited array of integers 
   public void add_edge(int from, int to) {
     graph[from][to] = 1;
   }
 
   public void remove_edge(int from, int to) {
     graph[from][to] = 0; 
+  } 
+
+  public boolean checkList(int[] x, int value) {
+    boolean t = true; 
+    boolean f = false; 
+    
+    for (int i = 0; i < x.length; i++) {
+      if (x[i] == value) {
+        return f;
+    }
+   }
+    return t;
   }
 
-  public int[] traverse_bfs(int[] queue, int start) {
+
+  public void bfs(int start, int[] p) {
     
-  
     
+    if (count == 0) {
+      p[0] = start; 
+      count++;
+    }
+   
+    
+
+    if (count == prevCount || r + 1 > count ) { 
+      return; 
+    }
+
+    prevCount = count; 
+    
+
+    for (int x = 0; x < 10; x++) {
+      if ( 
+        (graph[start][x] == 1 && (start != x)) && 
+        (checkList(p, start) == true) ) {
+        p[count] = x; 
+        count++;
+      }
   }
+
+    bfs(p[r + 1], p); 
+    printList(p);
+    
+}
+
+  public void printList(int[] p) {
+    System.out.println(Arrays.toString(p));
+    System.out.println(Arrays.toString(graph[0]));
+  }
+
+
+
+
 
 }
