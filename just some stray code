@@ -1,1 +1,3 @@
 checkList(p, start) == true
+
+&& checkList(p, temp) == true

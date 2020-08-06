@@ -13,6 +13,7 @@ class Main {
     g.add_edge(0, 2);
     g.add_edge(2, 5);
     g.add_edge(2, 4);
+    g.add_edge(5, 6);
 
     int[] p = new int[10];
 

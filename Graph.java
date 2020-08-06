@@ -4,13 +4,9 @@ class Graph {
 
   int[][] graph;  
   int count = 0; 
-  int r = 0; 
-  int prevCount = 0; 
-  int tempMax;
   
   Graph(int max) { 
     graph = new int[max][max];
-    tempMax = max; 
   }
 
 //the visited array of integers 
@@ -27,7 +23,7 @@ class Graph {
     boolean f = false; 
     
     for (int i = 0; i < x.length; i++) {
-      if (x[i] == value) {
+      if (x[i] == value && value != 0) {
         return f;
     }
    }
@@ -37,38 +33,49 @@ class Graph {
 
   public void bfs(int start, int[] p) {
 
-    for (int y = 0; y < 10; y++) {
+    int temp = start; 
+    int r = 0; 
 
+    do {
       if (count == 0) {
-        p[0] = start; 
+        p[0] = temp; 
         count++;
     }
-   
-      if (count == prevCount || r + 1 > count ) { 
-       return; 
-    }
-
-      prevCount = count; 
-    
 
       for (int x = 0; x < 10; x++) {
-        if (graph[start][x] == 1 ) {
-        p[count] = x; 
-        count = count + 1;
+        if (graph[temp][x] == 1) {
+          p[count] = x; 
+          count = count + 1;
       }
   }
+       r = r + 1; 
+       temp = p[r];
 
-       start = p[r + 1];
+  } while (count - 1 > r);
 
-    
-  }
-    printList(p, count);
-    System.out.println(graph[start][3]);
+    printList(p);
+    System.out.println("r:  " + r);
+    System.out.println("temp: " + temp);
+    System.out.println("count: " + count);
 }
 
-  public void printList(int[] p, int count) {
+
+
+
+
+
+
+
+
+  public void printList(int[] p) {
     System.out.println(Arrays.toString(p));
-    System.out.println(count);
+    System.out.println(" ");
+    System.out.println(Arrays.toString(graph[0]));
+    System.out.println(Arrays.toString(graph[1]));
+    System.out.println(Arrays.toString(graph[2]));
+    System.out.println(Arrays.toString(graph[3]));
+    System.out.println(Arrays.toString(graph[4]));
+    System.out.println(Arrays.toString(graph[5]));
   }
 
 }
