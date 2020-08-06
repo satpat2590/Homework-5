@@ -36,43 +36,72 @@ class Graph {
 
 
   public void bfs(int start, int[] p) {
-    
-    
-    if (count == 0) {
-      p[0] = start; 
-      count++;
+
+    for (int y = 0; y < 10; y++) {
+
+      if (count == 0) {
+        p[0] = start; 
+        count++;
     }
    
-    
-
-    if (count == prevCount || r + 1 > count ) { 
-      return; 
+      if (count == prevCount || r + 1 > count ) { 
+       return; 
     }
 
-    prevCount = count; 
+      prevCount = count; 
     
 
-    for (int x = 0; x < 10; x++) {
-      if ( 
-        (graph[start][x] == 1 && (start != x)) && 
-        (checkList(p, start) == true) ) {
+      for (int x = 0; x < 10; x++) {
+        if (graph[start][x] == 1 ) {
         p[count] = x; 
-        count++;
+        count = count + 1;
       }
   }
 
-    bfs(p[r + 1], p); 
-    printList(p);
+       start = p[r + 1];
+
     
+  }
+    printList(p, count);
+    System.out.println(graph[start][3]);
 }
 
-  public void printList(int[] p) {
+  public void printList(int[] p, int count) {
     System.out.println(Arrays.toString(p));
-    System.out.println(Arrays.toString(graph[0]));
+    System.out.println(count);
   }
 
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
